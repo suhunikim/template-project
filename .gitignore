@@ -7,3 +7,17 @@ Thumbs.db
 
 # IntelliJ project files
 *.iml
+
+# Compiled class file
+*.class
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
