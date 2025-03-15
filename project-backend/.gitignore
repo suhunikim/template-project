@@ -4,6 +4,17 @@ target/
 
 # IDE files
 .idea/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Spring Boot Help file (optional)
+HELP.md
+
+# ZIP file (optional)
+project-backend.zip
 
 # Logs
 *.log
