@@ -1,20 +1,19 @@
-# Build files
-build/
-target/
-
-# IDE files
-.idea/
-.vscode/
-
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# Spring Boot Help file (optional)
-HELP.md
+# Build files
+build/
+target/
+.gradle/
+out/
 
-# ZIP file (optional)
-project-backend.zip
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
 
 # Logs
 *.log
@@ -24,6 +23,12 @@ project-backend.zip
 *.jar
 *.war
 *.class
+
+# Spring Boot Help file (optional)
+HELP.md
+
+# ZIP file (optional)
+project-backend.zip
 
 # Environment variables (optional)
 .env
