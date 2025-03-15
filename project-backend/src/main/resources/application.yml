@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL}  # MariaDB 데이터베이스 연결 URL (호스트, 포트, 데이터베이스 이름)
+    username: ${DATABASE_USERNAME}  # 데이터베이스 사용자 이름
+    password: ${DATABASE_PASSWORD}  # 데이터베이스 비밀번호 (보안에 주의)
+    driver-class-name: org.mariadb.jdbc.Driver  # MariaDB JDBC 드라이버 클래스 이름
+  jpa:
+    hibernate:
+      ddl-auto: update  # DDL 자동 생성/관리 옵션 (create, update, validate, none 등)
+    database-platform: org.hibernate.dialect.MariaDBDialect # (Hibernate가 특정 데이터베이스에 맞는 SQL을 생성)
+    show-sql: true  # SQL 쿼리 로깅 여부
+    properties:
+      hibernate:
+        format_sql: true  # SQL 쿼리 포맷팅 여부 (가독성 향상, 개발 시에만)
+        default_batch_fetch_size: 1000 # N+1 문제 완화
+  #devtools:  # (선택 사항) 개발 편의 기능 (spring-boot-devtools 의존성 필요)
+  #  livereload:
+  #    enabled: true  # LiveReload 활성화 (코드 변경 시 자동 새로고침)
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace  # SQL 파라미터 로깅
+
+#server:  # (선택 사항) 내장 WAS (Tomcat) 설정
+#  port: 8080  # 포트 번호 (기본값 8080)
