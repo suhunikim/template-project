@@ -21,10 +21,8 @@ services:
       - "8080:8080"
     depends_on:
       - db
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/project-db
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: root123 # 변경
+    env_file: # 이 부분 추가
+      - .env
 
   frontend:
     build: ./project-frontend
@@ -38,5 +36,5 @@ services:
     depends_on:
       - backend
 
-volumes:  # 최상위 레벨에 volumes 섹션 추가
+volumes: # 최상위 레벨에 volumes 섹션 추가
   mariadb_data:
