@@ -4,29 +4,27 @@ services:
     container_name: mariadb-container
     restart: always
     ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root123 # 변경
-      MYSQL_DATABASE: project-db
-      TZ: Asia/Seoul
+      - "3307:3306"  # 호스트 3307 <-> 컨테이너 3306
     volumes:
-      - mariadb_data:/var/lib/mysql  # named volume 사용
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - project_network
 
   backend:
     build: ./project-backend
-    image: project-backend:latest
     container_name: springboot-container
     restart: always
     ports:
       - "8080:8080"
     depends_on:
       - db
-    env_file: # 이 부분 추가
-      - .env
+    env_file:
+      - /project-backend/.env  # DB 정보 등을 .env에서 불러오기
+    networks:
+      - project_network
 
   frontend:
     build: ./project-frontend
-    image: project-frontend:latest
     container_name: react-container
     restart: always
     ports:
@@ -35,6 +33,12 @@ services:
     tty: true
     depends_on:
       - backend
+    networks:
+      - project_network
 
-volumes: # 최상위 레벨에 volumes 섹션 추가
+volumes:
   mariadb_data:
+
+networks:
+  project_network:
+    driver: bridge

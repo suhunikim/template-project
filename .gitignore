@@ -22,4 +22,4 @@ Thumbs.db
 *.tar.gz
 *.rar
 
-.env
+project-backend/.env
