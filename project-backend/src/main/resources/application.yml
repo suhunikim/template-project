@@ -2,6 +2,14 @@ spring:
   profiles:
     active: dev  # 기본적으로 로컬(dev) 환경을 활성화 (IntelliJ 실행 시 자동 적용)
 
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 3600
+
+logging:
+  level:
+    org.hibernate.type: trace  # SQL 실행 시 파라미터 값까지 출력 (디버깅용)
+
 ---
 # ✅ 로컬 개발 환경 설정 (IntelliJ 등에서 실행)
 spring:
@@ -44,6 +52,4 @@ spring:
         format_sql: true  # SQL 쿼리 가독성 향상
         default_batch_fetch_size: 1000  # N+1 문제 완화를 위한 기본 페치 사이즈
 
-logging:
-  level:
-    org.hibernate.type: trace  # SQL 실행 시 파라미터 값까지 출력 (디버깅용)
+
