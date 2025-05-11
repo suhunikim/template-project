@@ -38,7 +38,7 @@ public class UserResponseDto {
     public static UserResponseDto fromEntity(User user){
         UserResponseDto dto = new UserResponseDto();
         dto.userId = user.getUserId();
-        dto.password = user.getPassword();
+        //dto.password = user.getPassword();
         dto.userName = user.getUserName();
         dto.userEmail = user.getUserEmail();
         dto.phoneNumber = user.getPhoneNumber();
