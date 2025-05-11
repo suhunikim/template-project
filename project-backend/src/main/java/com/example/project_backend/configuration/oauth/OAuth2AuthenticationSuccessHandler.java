@@ -1,7 +1,6 @@
 package com.example.project_backend.configuration.oauth;
 
 import com.example.project_backend.configuration.jwt.JwtTokenProvider;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ public class OAuth2AuthenticationSuccessHandler implements AuthenticationSuccess
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-                                        Authentication authentication) throws IOException, ServletException {
+                                        Authentication authentication) throws IOException {
         // 인증 성공 후 처리
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
 
