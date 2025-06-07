@@ -1,4 +1,4 @@
-package com.example.project_backend.api.user.dto;
+package com.example.project_backend.api.auth.dto;
 
 import com.example.project_backend.common.code.UserRole;
 import com.example.project_backend.common.code.UserStatus;
@@ -15,15 +15,15 @@ import java.time.LocalDateTime;
 public class UserResponseDto {
 
     private Long userId;
-    private String password;
     private String userName;
     private String userEmail;
     private String phoneNumber;
     private UserStatus status;
     private String statusDescription;
     private UserRole role;
+    private String roleTitle;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastLogin;
 
     private String department;
@@ -37,19 +37,29 @@ public class UserResponseDto {
 
     public static UserResponseDto fromEntity(User user){
         UserResponseDto dto = new UserResponseDto();
+
         dto.userId = user.getUserId();
-        //dto.password = user.getPassword();
-        dto.userName = user.getUserName();
-        dto.userEmail = user.getUserEmail();
-        dto.phoneNumber = user.getPhoneNumber();
-        dto.status = user.getStatus();
-        dto.role = user.getRole();
+        dto.userName = user.getUserName() != null ? user.getUserName() : "";
+        dto.userEmail = user.getUserEmail() != null ? user.getUserEmail() : "";
+        dto.phoneNumber = user.getPhoneNumber() != null ? user.getPhoneNumber() : "";
+
+        UserStatus status = user.getStatus();
+        dto.status = status != null ? status : UserStatus.INACTIVE;
+        dto.statusDescription = status != null ? status.getDescription() : "대기중";
+
+        UserRole role = user.getRole();
+        dto.role = role != null ? role : UserRole.USER;
+        dto.roleTitle = role != null ? role.getTitle() : "일반 사용자";
+
         dto.lastLogin = user.getLastLogin();
-        dto.department = user.getDepartment();
-        dto.position = user.getPosition();
-        dto.jobTitle = user.getJobTitle();
+
+        dto.department = user.getDepartment() != null ? user.getDepartment() : "";
+        dto.position = user.getPosition() != null ? user.getPosition() : "";
+        dto.jobTitle = user.getJobTitle() != null ? user.getJobTitle() : "";
+
         dto.hireDate = user.getHireDate();
         dto.managerId = user.getManagerId();
+
         return dto;
     }
 }

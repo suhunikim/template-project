@@ -1,6 +1,6 @@
-package com.example.project_backend.api.user.service;
+package com.example.project_backend.api.auth.service;
 
-import com.example.project_backend.api.user.dto.*;
+import com.example.project_backend.api.auth.dto.*;
 import com.example.project_backend.common.code.ErrorCode;
 import com.example.project_backend.common.exception.CustomException;
 import com.example.project_backend.configuration.jwt.JwtTokenProvider;

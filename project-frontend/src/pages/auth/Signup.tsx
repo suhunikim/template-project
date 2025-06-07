@@ -1,7 +1,7 @@
 import {useState} from "react";
-import "../../styles/signup.css";
+import "../../styles/auth/signup.css";
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
+import axios from "../../utils/axios";
 
 export default function Signup() {
     // navigete 초기화
@@ -33,7 +33,7 @@ export default function Signup() {
 
         try{
             // 회원가입 API 호출
-            await axios.post('/api/users/signup', {
+            await axios.post('/auth/signup', {
                 user_email: form.userEmail,
                 password: form.password,
                 user_name: form.userName,
@@ -54,12 +54,11 @@ export default function Signup() {
         <div className="signup-container">
             <div className="signup-card">
                 <h2 className="signup-title">사용자 등록</h2>
-                {error && <div className="signup-error">{error}</div>}
                 <form id="signupForm" className="signup-form" onSubmit={onSubmit}>
                     <div className="signup-sections">
                         <div className="signup-section">
                             <label>
-                                이메일
+                                이메일 {error && <div className="signup-error">{error}</div>}
                                 <input className="signup-input" name="userEmail" type="email"
                                        value={form.userEmail} onChange={onChange} required/>
                             </label>

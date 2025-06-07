@@ -1,4 +1,4 @@
-package com.example.project_backend.api.user.dto;
+package com.example.project_backend.api.auth.dto;
 
 import com.example.project_backend.common.code.UserRole;
 import com.example.project_backend.common.code.UserStatus;

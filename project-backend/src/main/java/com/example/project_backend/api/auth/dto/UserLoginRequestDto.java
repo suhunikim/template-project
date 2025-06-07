@@ -1,4 +1,4 @@
-package com.example.project_backend.api.user.dto;
+package com.example.project_backend.api.auth.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;

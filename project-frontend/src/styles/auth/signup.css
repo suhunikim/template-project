@@ -78,6 +78,11 @@
     background-color: #187bcd;
 }
 
+.signup-error {
+    color: red;
+    font-size: 12px;
+}
+
 /* ── 반응형: 모바일 세로 포함 (≤480px) ── */
 @media (max-width: 480px) {
     .signup-card {

@@ -8,7 +8,7 @@ const OAuth2RedirectHandler = () => {
         const token = new URL(window.location.href).searchParams.get("token");
 
         if (token) {
-            localStorage.setItem("token", token);
+            sessionStorage.setItem("accessToken", token);
             navigate("/main");
         } else {
             navigate("/login?error=missing_token");
